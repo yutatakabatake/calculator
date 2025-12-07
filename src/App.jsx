@@ -33,6 +33,13 @@ function App() {
     setFormula(newFormula);
   }
 
+  function handleInverse() {
+    const newCurrentNum = currentNum * -1;
+    const newFormula = [...formula.slice(0, formula.length - 1), newCurrentNum]
+    setCurrentNum(newCurrentNum);
+    setFormula(newFormula);
+  }
+
   function calculate() {
     // 1. まず × と ÷ を処理した新しい配列を作る
     let stack = [];
@@ -80,7 +87,7 @@ function App() {
       <div className='text-white text-4xl'>{display}</div>
       <div>
         <ResetButton handleClick={reset} />
-        <Inverse />
+        <Inverse handleClick={handleInverse} />
         <PercentButton />
         <OperatorButton name={"÷"} handleClick={handleOperation} />
       </div>
